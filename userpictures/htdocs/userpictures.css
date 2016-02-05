@@ -1,7 +1,3 @@
-img.userpictures_avatar {
-  box-shadow: 2px 2px 4px #444;
-}
-
 img.userpictures_avatar.timeline {
   margin-top: 0.2em;
   margin-right: 1em;
@@ -14,12 +10,9 @@ img.userpictures_avatar.ticket-reporter {
   margin: 0 10px 10px 0px;
 }
 
-img.userpictures_avatar.ticket-comment {
-  margin: 0 5px 5px 0;
-}
-
 img.userpictures_avatar.ticket-owner {
-  margin-top: 0.2em;
+  margin-top: -0.5em;
+  margin-bottom: -0.5em;
   margin-right: 1em;
   vertical-align: middle;
 }
@@ -27,10 +20,11 @@ img.userpictures_avatar.ticket-owner {
 img.userpictures_avatar.browser-lineitem,
 img.userpictures_avatar.wiki-history-lineitem {
   margin: 0 5px 0 0;
+  vertical-align: middle;
 }
 img.userpictures_avatar.attachment-lineitem {
-  margin: 0 5px 5px 0;
-  vertical-align: middle;
+  margin: 0 5px 0px 0;
+  vertical-align: bottom;
 }
 
 img.userpictures_avatar.browser-changeset,
@@ -59,4 +53,5 @@ img.userpictures_avatar.search-results {
 
 img.userpictures_avatar.report {
   margin-right: 5px;
+  vertical-align: middle;
 }
