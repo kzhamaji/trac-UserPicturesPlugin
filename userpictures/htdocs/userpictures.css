@@ -55,3 +55,7 @@ img.userpictures_avatar.report {
   margin-right: 5px;
   vertical-align: middle;
 }
+
+img.userpictures_avatar.query {
+  vertical-align: middle;
+}
