@@ -48,9 +48,9 @@ class UserPicturesModule(Component):
 
     ticket_comment_diff_size = Option("userpictures", "ticket_comment_diff_size", default="30")
     ticket_reporter_size = Option("userpictures", "ticket_reporter_size", default="60")
-    ticket_owner_size = Option("userpictures", "ticket_owner_size", default="30")
-    ticket_comment_size = Option("userpictures", "ticket_comment_size", default="40")
-    timeline_size = Option("userpictures", "timeline_size", default="30")
+    ticket_owner_size = Option("userpictures", "ticket_owner_size", default="22")
+    ticket_comment_size = Option("userpictures", "ticket_comment_size", default="32")
+    timeline_size = Option("userpictures", "timeline_size", default="24")
     report_size = Option("userpictures", "report_size", default="20")
     browser_changeset_size = Option("userpictures", "browser_changeset_size", default="30")
     browser_filesource_size = Option("userpictures", "browser_filesource_size", default="40")
