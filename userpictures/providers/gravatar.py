@@ -12,6 +12,8 @@ class UserPicturesGravatarProvider(Component):
     # from trac source
     _long_author_re = re.compile(r'.*<([^@]+)@([^@]+)>\s*|([^@]+)@([^@]+)')
 
+    default = Option("userpictures", "gravatar.default", default="")
+
     @property
     def email_map(self):
         if hasattr(self, '_email_map'):
@@ -41,5 +43,9 @@ class UserPicturesGravatarProvider(Component):
         else:
             href = "http://www.gravatar.com/avatar/" + email_hash
         href += "?size=%s" % size
+
+	if len(self.default) > 0:
+	    href += "&d=%s" % self.default
+
         return href
 
