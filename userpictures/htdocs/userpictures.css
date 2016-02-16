@@ -52,8 +52,9 @@ img.userpictures_avatar.search-results {
   margin-top: 3px;
   vertical-align: middle;
 }
-
 img.userpictures_avatar.report {
+  margin-top: -2px;
+  margin-bottom: -2px;
   margin-right: 5px;
   vertical-align: middle;
 }
