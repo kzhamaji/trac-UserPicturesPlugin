@@ -139,6 +139,8 @@ class UserPicturesModule(Component):
         if 'ticket' not in data:
             return []
         author = data['ticket'].values['owner']
+	if not author:
+            return []
 
         return [lambda stream: Transformer('//td[@headers="h_owner"]'
                                            ).prepend(self._generate_avatar(
@@ -256,11 +258,15 @@ class UserPicturesModule(Component):
 
         def find_change(stream):
             author = ''.join(stream_part[1] for stream_part in stream if stream_part[0] == 'TEXT').strip()
+            if len(author) == 0:
+                return stream
+            
             tag = self._generate_avatar(req, author,
                                         class_, self.report_size)
             return itertools.chain([stream[0]], tag, stream[1:])
 
-        return [Transformer('//table[@class="listing tickets"]/tbody/tr/td[@class="owner"]|//table[@class="listing tickets"]/tbody/tr/td[@class="reporter"]').filter(find_change)]
+        return [Transformer('//table[@class="listing tickets"]/tbody/tr/td[@class="owner"]|'+
+                            '//table[@class="listing tickets"]/tbody/tr/td[@class="reporter"]').filter(find_change)]
 
     def _wiki_filter(self, req, data):
         if "action=diff" in req.query_string:
