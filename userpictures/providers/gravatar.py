@@ -25,10 +25,12 @@ class UserPicturesGravatarProvider(Component):
         return self._email_map
 
     def get_src(self, req, username, size):
-        email = ''
+        email = username
         if '@' not in username:
             if username != 'anonymous':
-                email = self.email_map.get(username) or ''
+                email_ = self.email_map.get(username)
+                if email_:
+                    email = email_
         else:
             author_info = self._long_author_re.match(username)
             if author_info:
