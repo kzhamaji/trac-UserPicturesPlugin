@@ -18,6 +18,9 @@ img.userpictures_avatar.ticket-owner {
   margin-right: 1em;
   vertical-align: middle;
 }
+div#changelog span.threading {
+  padding-top: 18px;
+}
 
 img.userpictures_avatar.browser-lineitem,
 img.userpictures_avatar.wiki-history-lineitem {
