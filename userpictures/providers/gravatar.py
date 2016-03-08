@@ -1,7 +1,7 @@
 import hashlib
 import re
 
-from trac.config import *
+from trac.config import Option, BoolOption
 from trac.core import *
 
 from userpictures import IUserPicturesProvider
@@ -13,6 +13,7 @@ class UserPicturesGravatarProvider(Component):
     _long_author_re = re.compile(r'.*<([^@]+)@([^@]+)>\s*|([^@]+)@([^@]+)')
 
     default = Option("userpictures", "gravatar.default", default="")
+    use_size = BoolOption("userpictures", "gravatar.use_size", default=False)
 
     @property
     def email_map(self):
@@ -44,10 +45,14 @@ class UserPicturesGravatarProvider(Component):
             href = "https://gravatar.com/avatar/" + email_hash
         else:
             href = "http://www.gravatar.com/avatar/" + email_hash
-        href += "?size=%s" % size
 
+        options = []
+        if self.use_size:
+            options.append("s=%s" % size)
 	if len(self.default) > 0:
-	    href += "&d=%s" % self.default
+            options.append("d=%s" % self.default)
+        if options:
+            href += "?" + '&'.join(options)
 
         return href
 
