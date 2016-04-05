@@ -108,7 +108,7 @@ class UserPicturesModule(Component):
 
     def _ticket_filter(self, req, data):
         filter_ = []
-        if "action=comment-diff" in req.query_string:
+        if "action=comment-diff" in req.query_string or "action=diff" in req.query_string:
             filter_.extend(self._ticket_comment_diff_filter(req, data))
         else:
             filter_.extend(self._ticket_reporter_filter(req, data))
