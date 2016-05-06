@@ -2,9 +2,9 @@ div.timeline > dl {
   padding-left: 2.5em;
 }
 img.userpictures_avatar.timeline {
-  margin-top: -2em;
+  margin-top: -1.5em;
   margin-left: -8.5em;
-  padding-right: 4em;
+  float: left;
 }
 
 img.userpictures_avatar.ticket-reporter {
