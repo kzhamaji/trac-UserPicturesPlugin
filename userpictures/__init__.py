@@ -49,7 +49,7 @@ class UserPicturesModule(Component):
     ticket_comment_diff_size = Option("userpictures", "ticket_comment_diff_size", default="30")
     ticket_reporter_size = Option("userpictures", "ticket_reporter_size", default="60")
     ticket_owner_size = Option("userpictures", "ticket_owner_size", default="22")
-    ticket_comment_size = Option("userpictures", "ticket_comment_size", default="28")
+    ticket_comment_size = Option("userpictures", "ticket_comment_size", default="32")
     timeline_size = Option("userpictures", "timeline_size", default="24")
     report_size = Option("userpictures", "report_size", default="20")
     browser_changeset_size = Option("userpictures", "browser_changeset_size", default="30")
@@ -101,10 +101,13 @@ class UserPicturesModule(Component):
         add_stylesheet(req, 'userpictures/userpictures.css')
         return stream
 
-    def _generate_avatar(self, req, author, class_, size):
+    def _generate_avatar(self, req, author, class_, size, style=None):
         href = self.pictures_provider.get_src(req, author, size)
-        return tag.img(src=href, class_='userpictures_avatar %s' % class_,
-                       width=size, height=size).generate()
+	_tag = tag.img(src=href, class_='userpictures_avatar %s' % class_,
+		      width=size, height=size)
+	if style:
+            _tag(style=style)
+        return _tag.generate()
 
     def _ticket_filter(self, req, data):
         filter_ = []
@@ -160,12 +163,13 @@ class UserPicturesModule(Component):
         def find_change(stream):
             stream = iter(stream)
             author = apply_authors.pop()
+	    style = "float:left; margin-left:-%spx" % (int(self.ticket_comment_size) + 4,)
             tag = self._generate_avatar(req, author,
-                                        'ticket-comment', self.ticket_comment_size)
+                                        'ticket-comment', self.ticket_comment_size, style)
             return itertools.chain([next(stream)], tag, stream)
 
-        return [Transformer('//div[@id="changelog"]/div[@class="change"]/h3[@class="change"]'
-                            ).filter(find_change)]
+        xpath = '//div[@id="changelog"]/div[@class="change"]'
+        return [Transformer(xpath).filter(find_change)]
 
     def _timeline_filter(self, req, data):
         if 'events' not in data:
