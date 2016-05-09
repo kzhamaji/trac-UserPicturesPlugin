@@ -1,3 +1,4 @@
+/* timeline */
 div.timeline > dl {
   padding-left: 2.5em;
 }
@@ -5,11 +6,14 @@ img.userpictures_avatar.timeline {
   margin-top: -1.5em;
   margin-left: -8.5em;
   float: left;
+  border-radius: 0.3em;
 }
 
+/* ticket */
 img.userpictures_avatar.ticket-reporter {
   float: left;
   margin: 4px 10px 10px 0px;
+  border-radius: 0.5em;
 }
 
 img.userpictures_avatar.ticket-owner {
@@ -17,16 +21,23 @@ img.userpictures_avatar.ticket-owner {
   margin-bottom: -0.5em;
   margin-right: 1em;
   vertical-align: middle;
+  border-radius: 0.3em;
+}
+img.userpictures_avatar.ticket-comment {
+  border-radius: 0.3em;
+  float: left;
 }
 
 img.userpictures_avatar.browser-lineitem,
 img.userpictures_avatar.wiki-history-lineitem {
   margin: -1px 5px -1px 0;
   vertical-align: middle;
+  border-radius: 0.3em;
 }
 img.userpictures_avatar.attachment-lineitem {
   margin: 0 5px 0px 0;
   vertical-align: bottom;
+  border-radius: 0.3em;
 }
 
 img.userpictures_avatar.browser-changeset,
@@ -34,31 +45,36 @@ img.userpictures_avatar.ticket-comment-diff,
 img.userpictures_avatar.wiki-diff {
   margin: 3px 10px 5px 0px;
   vertical-align: middle;
+  border-radius: 0.3em;
 }
-
 img.userpictures_avatar.browser-filesource,
 img.userpictures_avatar.wiki-view {
   margin: 3px 10px 0px 0px;
   vertical-align: top;
+  border-radius: 0.3em;
 }
 
 img.userpictures_avatar.attachment-view {
   margin: 3px 10px 3px 0px;
   vertical-align: top;
+  border-radius: 0.3em;
 }
 
 img.userpictures_avatar.search-results {
   margin-right: 5px;
   margin-top: 3px;
   vertical-align: middle;
+  border-radius: 0.3em;
 }
 img.userpictures_avatar.report {
   margin-top: -2px;
   margin-bottom: -2px;
   margin-right: 5px;
   vertical-align: middle;
+  border-radius: 0.3em;
 }
 
 img.userpictures_avatar.query {
   vertical-align: middle;
+  border-radius: 0.3em;
 }

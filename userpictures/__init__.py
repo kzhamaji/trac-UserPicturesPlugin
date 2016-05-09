@@ -163,7 +163,7 @@ class UserPicturesModule(Component):
         def find_change(stream):
             stream = iter(stream)
             author = apply_authors.pop()
-	    style = "float:left; margin-left:-%spx" % (int(self.ticket_comment_size) + 4,)
+	    style = "margin-left:-%spx" % (int(self.ticket_comment_size) + 4,)
             tag = self._generate_avatar(req, author,
                                         'ticket-comment', self.ticket_comment_size, style)
             return itertools.chain([next(stream)], tag, stream)
