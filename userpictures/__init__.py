@@ -145,10 +145,11 @@ class UserPicturesModule(Component):
 	if not author:
             return []
 
+	style = "margin-left:-%spx" % (int(self.ticket_owner_size) + 8,)
         return [lambda stream: Transformer('//td[@headers="h_owner"]'
                                            ).prepend(self._generate_avatar(
                     req, author,
-                    'ticket-owner', self.ticket_owner_size)
+                    'ticket-owner', self.ticket_owner_size, style)
                                                      )(stream)]
         
     def _ticket_comment_filter(self, req, data):
