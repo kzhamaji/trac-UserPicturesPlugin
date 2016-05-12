@@ -19,7 +19,7 @@ img.userpictures_avatar.ticket-reporter {
 img.userpictures_avatar.ticket-owner {
   margin-top: -0.5em;
   margin-bottom: -0.5em;
-  margin-right: 8px;
+  padding-right: 8px;
   vertical-align: middle;
   border-radius: 0.3em;
 }
