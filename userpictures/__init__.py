@@ -62,6 +62,8 @@ class UserPicturesModule(Component):
     attachment_view_size = Option("userpictures", "attachment_view_size", default="40")
     attachment_lineitem_size = Option("userpictures", "attachment_lineitem_size", default="20")
 
+    ticket_owner_fields = ListOption("userpictures", "ticket_owner_fields", default=['owner'])
+
     ## ITemplateProvider methods
 
     def get_htdocs_dirs(self):
@@ -115,7 +117,8 @@ class UserPicturesModule(Component):
             filter_.extend(self._ticket_comment_diff_filter(req, data))
         else:
             filter_.extend(self._ticket_reporter_filter(req, data))
-            filter_.extend(self._ticket_owner_filter(req, data))
+	    for field in self.ticket_owner_fields:
+		filter_.extend(self._ticket_owner_filter(req, data, field))
             filter_.extend(self._ticket_comment_filter(req, data))
         return filter_
 
@@ -138,19 +141,19 @@ class UserPicturesModule(Component):
                     req, author,
                     'ticket-reporter', self.ticket_reporter_size)
                                                      )(stream)]
-    def _ticket_owner_filter(self, req, data):
+    def _ticket_owner_filter(self, req, data, field):
         if 'ticket' not in data:
             return []
-        author = data['ticket'].values['owner']
+	author = data['ticket'].values[field]
 	if not author:
-            return []
+	    return []
 
 	style = "margin-left:-%spx" % (int(self.ticket_owner_size) + 8,)
-        return [lambda stream: Transformer('//td[@headers="h_owner"]'
-                                           ).prepend(self._generate_avatar(
-                    req, author,
-                    'ticket-owner', self.ticket_owner_size, style)
-                                                     )(stream)]
+	return [lambda stream: Transformer('//td[@headers="h_%s"]' % field,
+					   ).prepend(self._generate_avatar(
+		    req, author,
+		    'ticket-owner', self.ticket_owner_size, style)
+						     )(stream)]
         
     def _ticket_comment_filter(self, req, data):
         if 'changes' not in data:
