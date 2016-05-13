@@ -147,6 +147,7 @@ class UserPicturesModule(Component):
 	author = data['ticket'].values[field]
 	if not author:
 	    return []
+	author = author.split(',')[0].strip()
 
 	style = 'float:right'
 	return [lambda stream: Transformer('//th[@id="h_%s"]' % field,
