@@ -99,8 +99,8 @@ class UserPicturesModule(Component):
         for f in filter_:
             if f is not None:
                 stream |= f
+		add_stylesheet(req, 'userpictures/userpictures.css')
 
-        add_stylesheet(req, 'userpictures/userpictures.css')
         return stream
 
     def _generate_avatar(self, req, author, class_, size, style=None):
