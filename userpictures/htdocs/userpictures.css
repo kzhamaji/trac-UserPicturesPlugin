@@ -1,3 +1,6 @@
+img.userpictures_avatar:active {
+  transform: scale(2);
+}
 /* timeline */
 div.timeline > dl {
   padding-left: 2.5em;

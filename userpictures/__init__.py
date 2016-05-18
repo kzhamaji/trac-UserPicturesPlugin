@@ -80,6 +80,7 @@ class UserPicturesModule(Component):
             filter_.extend(self._ticket_filter(req, data))
         elif req.path_info.startswith("/timeline"):
             filter_.extend(self._timeline_filter(req, data))
+	    add_stylesheet(req, 'userpictures/userpictures.css')
         elif req.path_info.startswith("/browser") or req.path_info.startswith("/changeset"):
             filter_.extend(self._browser_filter(req, data))
         elif req.path_info.startswith("/log"):
