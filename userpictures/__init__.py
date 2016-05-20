@@ -145,7 +145,7 @@ class UserPicturesModule(Component):
     def _ticket_owner_filter(self, req, data, field):
         if 'ticket' not in data:
             return []
-	author = data['ticket'].values[field]
+	author = data['ticket'].values.get(field, '')
 	if not author:
 	    return []
 	author = author.split(',')[0].strip()
