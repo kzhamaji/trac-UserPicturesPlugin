@@ -107,7 +107,7 @@ class UserPicturesModule(Component):
     def _generate_avatar(self, req, author, class_, size, style=None):
         href = self.pictures_provider.get_src(req, author, size)
 	_tag = tag.img(src=href, class_='userpictures_avatar %s' % class_,
-		      width=size, height=size)
+		      width=size, height=size, alt='')
 	if style:
             _tag(style=style)
         return _tag.generate()
