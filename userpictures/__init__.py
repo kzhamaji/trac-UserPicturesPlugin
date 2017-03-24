@@ -105,6 +105,9 @@ class UserPicturesModule(Component):
         return stream
 
     def _generate_avatar(self, req, author, class_, size, style=None):
+        if author is None:
+	    return ''
+        
         href = self.pictures_provider.get_src(req, author, size)
 	_tag = tag.img(src=href, class_='userpictures_avatar %s' % class_,
 		      width=size, height=size, alt='')
@@ -161,10 +164,13 @@ class UserPicturesModule(Component):
         if 'changes' not in data:
             return []
 
-        apply_authors = []
-        for change in data['changes']:
-            author = change['author']
-            apply_authors.insert(0, author)
+	if 'change' not in data:
+            apply_authors = []
+            for change in data['changes']:
+                author = change['author']
+                apply_authors.insert(0, author)
+	else:
+	    apply_authors = [data['change']['author']]
 
         def find_change(stream):
             stream = iter(stream)
