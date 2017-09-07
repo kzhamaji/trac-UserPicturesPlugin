@@ -1,5 +1,9 @@
 img.userpictures_avatar:active {
   transform: scale(2);
+  transition: all 0.15s ease-in-out;
+}
+img.userpictures_avatar {
+  transition: all 0.1s ease-in-out;
 }
 /* timeline */
 div.timeline > dl {
